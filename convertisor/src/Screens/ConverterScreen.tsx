@@ -2,8 +2,9 @@ import { useState } from "react";
 import { View, Text, TextInput, StyleSheet, TouchableOpacity } from 'react-native';
 import Separator from "../Components/Separator";
 import currency from '../Utils/constant';
-import DropdownMenu from "../Components/Dropdown";
+import CurrencyMenu from "../Components/Modal";
 import { CurrencyType } from "../Utils/interface";
+import { Button } from "@rneui/base";
 
 const ConverterScreen = () => {
     const [number, setNumber] = useState('')
@@ -12,12 +13,7 @@ const ConverterScreen = () => {
     return (
         <View style={Styles.container}>
             <View style={Styles.menu}>
-                <DropdownMenu label="selected item : " data={currency} onSelect={setSelected}/>
-                {!!selected && (
-                    <Text>
-                     Selected: label = {selected.key} and value = {selected.currency}
-                    </Text>
-                )}
+                <CurrencyMenu onSelect={setSelected}/>
             </View>
             <View style={Styles.convert}>
                 <TextInput 
